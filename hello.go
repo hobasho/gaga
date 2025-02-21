@@ -8,9 +8,15 @@ import (
 
 // Структуры для парсинга JSON ответа
 type PackageInfo struct {
-	Name    string `json:"name"`
-	Version string `json:"version"`
-	Arch    string `json:"arch"`
+	Name      string `json:"name"`
+	Epoch     int    `json:"epoch"`
+	Version   string `json:"version"`
+	Release   string `json:"release"`
+	Arch      string `json:"arch"`
+	Disttag   string `json:"disttag`
+	Buildtime int    `json:"buildtime`
+	Source    string `json:"source`
+
 	// Добавьте другие нужные поля по документации API
 }
 
@@ -45,7 +51,7 @@ func main() {
 	// Выводим имена пакетов
 	fmt.Printf("Found %d packages in branch '%s':\n", len(result.Packages), result.Branch)
 	for _, pkg := range result.Packages {
-		fmt.Println(pkg.Name)
+		fmt.Println(pkg.Name, pkg.Epoch, pkg.Version, pkg.Release, pkg.Arch, pkg.Disttag, pkg.Buildtime, pkg.Source)
 	}
 
 }
