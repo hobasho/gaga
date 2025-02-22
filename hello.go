@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sort"
 )
 
 // Структуры для парсинга JSON ответа
@@ -48,10 +49,26 @@ func main() {
 		return
 	}
 
-	// Выводим имена пакетов
-	fmt.Printf("Found %d packages in branch '%s':\n", len(result.Packages), result.Branch)
+	// Собираем уникальные архитектуры
+	archSet := make(map[string]struct{})
 	for _, pkg := range result.Packages {
-		fmt.Println(pkg.Name, pkg.Epoch, pkg.Version, pkg.Release, pkg.Arch, pkg.Disttag, pkg.Buildtime, pkg.Source, "\n")
+		if pkg.Arch != "" { // Игнорируем пустые значения
+			archSet[pkg.Arch] = struct{}{}
+		}
+	}
+
+	// Преобразуем в срез и сортируем
+	architectures := make([]string, 0, len(archSet))
+	for arch := range archSet {
+		architectures = append(architectures, arch)
+	}
+	sort.Strings(architectures)
+
+	// Выводим результат
+	fmt.Printf("Found %d unique architectures in branch '%s':\n",
+		len(architectures), result.Branch)
+	for _, arch := range architectures {
+		fmt.Println(arch)
 	}
 
 }
