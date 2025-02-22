@@ -51,7 +51,7 @@ func main() {
 	// Выводим имена пакетов
 	fmt.Printf("Found %d packages in branch '%s':\n", len(result.Packages), result.Branch)
 	for _, pkg := range result.Packages {
-		fmt.Println(pkg.Name, pkg.Epoch, pkg.Version, pkg.Release, pkg.Arch, pkg.Disttag, pkg.Buildtime, pkg.Source)
+		fmt.Println(pkg.Name, pkg.Epoch, pkg.Version, pkg.Release, pkg.Arch, pkg.Disttag, pkg.Buildtime, pkg.Source, "\n")
 	}
 
 }
