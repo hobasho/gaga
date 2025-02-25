@@ -1,6 +1,5 @@
 package main
 
-//ниче не меняем ес шо
 import (
 	"encoding/json"
 	"fmt"
@@ -15,9 +14,9 @@ type PackageInfo struct {
 	Version   string `json:"version"`
 	Release   string `json:"release"`
 	Arch      string `json:"arch"`
-	Disttag   string `json:"disttag`
-	Buildtime int    `json:"buildtime`
-	Source    string `json:"source`
+	Disttag   string `json:"disttag"`
+	Buildtime int    `json:"buildtime"`
+	Source    string `json:"source"`
 
 	// Добавьте другие нужные поля по документации API
 }
