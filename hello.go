@@ -1,5 +1,6 @@
 package main
 
+//помарочки были\\чисто ради коммита
 import (
 	"encoding/json"
 	"fmt"
@@ -38,7 +39,7 @@ func main() {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("HTTP error popo: %s\n", resp.Status)
+		fmt.Printf("HTTP error : %s\n", resp.Status)
 		return
 	}
 
